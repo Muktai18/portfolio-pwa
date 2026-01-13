@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muktai Biradar | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #020617;
+    --card-bg: rgba(30, 41, 59, 0.55);
+    --accent: #a855f7;
+    --accent-glow: rgba(168, 85, 247, 0.45);
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --nav-bg: rgba(15, 23, 42, 0.9);
+}
+
+:root.light {
+    --bg: #f8fafc;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --accent: #7c3aed;
+    --accent-glow: rgba(124, 58, 237, 0.35);
+    --text-main: #020617;
+    --text-dim: #475569;
+    --nav-bg: rgba(255,255,255,0.9);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text-main);
+    line-height: 1.6;
+    transition: background 0.4s, color 0.4s;
+    scroll-behavior: smooth;
+}
+
+/* ================= NAV ================= */
+nav {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 1150px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(14px);
+    border-radius: 50px;
+    padding: 14px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.4);
+}
+
+nav h2 span { color: var(--accent); }
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 28px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--accent);
+}
+
+.nav-right {
+    display: flex;
+    gap: 14px;
+}
+
+.theme-toggle, .menu-toggle {
+    background: rgba(255,255,255,0.12);
+    border: none;
+    color: var(--text-main);
+    padding: 8px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.menu-toggle { display: none; }
+
+/* ================= HERO ================= */
+header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 130px 20px 40px;
+}
+
+.hero-badge {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 var(--accent-glow); }
+    70% { box-shadow: 0 0 0 15px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+header h1 {
+    font-size: clamp(2.6rem, 8vw, 4.8rem);
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+header h1 span {
+    background: linear-gradient(90deg, #a855f7, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    max-width: 680px;
+    color: var(--text-dim);
+    margin-bottom: 28px;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 14px 34px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 15px 30px -12px var(--accent-glow);
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* ================= SECTIONS ================= */
+section {
+    padding: 100px 20px;
+    max-width: 1150px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+}
+/* ================= ABOUT GRID ================= */
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* LEFT */
+.about-left h3 {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.about-left p {
+    color: var(--text-dim);
+    line-height: 1.8;
+}
+
+/* RIGHT */
+.about-right p {
+    margin-bottom: 12px;
+    color: var(--text-dim);
+}
+/* ================= ABOUT SHAPES LAYOUT ================= */
+.about-tech-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 35px;
+    align-items: center;
+}
+
+/* ========== LEFT CIRCLE ========== */
+.about-circle {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        transparent,
+        var(--accent),
+        transparent
+    );
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 25px 45px -18px var(--accent-glow);
+}
+
+.about-circle-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+}
+
+.about-circle-inner h3 {
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-size: 1.6rem;
+}
+
+.about-circle-inner p {
+    color: var(--text-dim);
+    line-height: 1.7;
+}
+
+/* ========== RIGHT SQUARE STACK ========== */
+.about-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+.about-square {
+    border-left: 4px solid var(--accent);
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.about-square:hover {
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 22px 40px -18px var(--accent-glow);
+}
+
+/* ========== ANIMATION ========== */
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: revealText 0.8s ease forwards;
+}
+
+@keyframes revealText {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== MOBILE ========== */
+@media (max-width: 768px) {
+    .about-tech-container {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .about-circle {
+        margin-bottom: 25px;
+    }
+}
+/* ================= SIMPLE PROJECT CARDS ================= */
+.projects-simple-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-simple {
+    transition: 0.35s;
+}
+
+.project-simple h3 {
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+}
+
+.project-simple p {
+    color: var(--text-dim);
+    line-height: 1.75;
+    font-size: 14px;
+}
+
+/* HOVER */
+.project-simple:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 55px -22px var(--accent-glow);
+}
+
+
+
+
+
+
+
+/* ================= CIRCULAR SKILLS ================= */
+.skills-circle-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 40px;
+    justify-items: center;
+}
+
+.skill-circle {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background:
+        conic-gradient(
+            var(--accent) calc(var(--percent) * 1%),
+            rgba(255,255,255,0.08) 0
+        );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 20px 40px -15px var(--accent-glow);
+    animation: scaleIn 0.8s ease forwards;
+}
+
+.skill-circle::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: var(--bg);
+    border-radius: 50%;
+}
+
+.skill-circle span {
+    position: relative;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.skill-circle p {
+    position: relative;
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--text-dim);
+    text-align: center;
+}
+
+.skill-circle:hover {
+    transform: scale(1.08);
+    transition: 0.3s;
+}
+
+/* animation */
+@keyframes scaleIn {
+    from {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+
+/* ================= CONTACT ================= */
+#contact .glass-card {
+    text-align: center;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-dim);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+    nav ul {
+        position: absolute;
+        top: 75px;
+        right: 20px;
+        background: var(--nav-bg);
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 20px;
+        display: none;
+    }
+    nav ul.show { display: flex; }
+    .menu-toggle { display: block; }
+}
+</style>
+</head>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#a855f7">
+
+
+<body>
+
+<nav>
+    <h2>Muktai Biradar</h2>
+
+    <ul id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+</nav>
+
+<header id="home">
+    <div class="hero-badge">Available for Internships</div>
+    <h1>Building the <span>Future</span> of AI & Web</h1>
+    <p>I’m <strong>Muktai Biradar</strong>, an AIML student focused on creating intelligent, scalable and modern digital products.</p>
+    <a href="#projects" class="btn-primary">View My Work</a>
+</header>
+
+<section id="about">
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about-tech-container">
+
+        <!-- LEFT CIRCLE CARD -->
+        <div class="about-circle reveal">
+            <div class="about-circle-inner">
+                <h3>Who I Am</h3>
+                <p>
+                    AIML Student<br>
+                    Web Developer<br>
+                    Problem Solver
+                </p>
+            </div>
+        </div>
+
+        <!-- RIGHT SQUARE CARDS -->
+        <div class="about-stack">
+            <div class="about-square glass-card reveal">
+                Passionate AIML student focused on solving real-world problems.
+            </div>
+            <div class="about-square glass-card reveal">
+                Strong interest in AI, Machine Learning, and modern web technologies.
+            </div>
+            <div class="about-square glass-card reveal">
+                Learn by building practical and scalable projects.
+            </div>
+            <div class="about-square glass-card reveal">
+                Believe in clean UI, UX, and efficient code.
+            </div>
+            <div class="about-square glass-card reveal">
+                Actively seeking internships and growth opportunities.
+            </div>
+            <div class="about-square glass-card reveal">
+                Curious, consistent, and improvement-driven mindset.
+            </div>
+        </div>
+
+    </div>
+</section>
+<section id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+
+    <div class="projects-simple-grid">
+
+        <div class="project-simple glass-card">
+            <h3>Smart Recipe Generator</h3>
+            <p>
+                An AI-powered web application that recommends recipes based on
+                available ingredients, dietary preferences, and cuisine type.
+                The project focuses on reducing food waste while helping users
+                cook efficiently using machine learning techniques.
+                Designed with a clean interface for easy interaction.
+            </p>
+        </div>
+
+        <div class="project-simple glass-card">
+            <h3>Portfolio Progressive Web App</h3>
+            <p>
+                A personal portfolio website converted into a Progressive Web App
+                to support offline usage and mobile installation.
+                The project emphasizes performance, accessibility, and modern
+                responsive design principles.
+                Built to deliver a smooth user experience.
+            </p>
+        </div>
+
+        
+
+    </div>
+</section>
+
+
+
+<section id="skills">
+    <h2 class="section-title">Technical Stack</h2>
+
+    <div class="skills-circle-container">
+        <div class="skill-circle" style="--percent:70">
+            <span>70%</span>
+            <p>Python / AIML</p>
+        </div>
+
+        <div class="skill-circle" style="--percent:75">
+            <span>75%</span>
+            <p>JavaScript</p>
+        </div>
+
+        <div class="skill-circle" style="--percent:85">
+            <span>85%</span>
+            <p>HTML / CSS</p>
+        </div>
+
+        <div class="skill-circle" style="--percent:80">
+            <span>80%</span>
+            <p>UI / UX</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="glass-card">
+        <h2>Let’s Connect</h2>
+        <p style="margin:15px 0; color:var(--text-dim);">
+            Open to internships, collaborations & learning opportunities.
+        </p>
+        <p style="font-weight:600;">biradarmuktai@gmail.com</p>
+        <a href="mailto:biradarmuktai@gmail.com" class="btn-primary" style="margin-top:20px; display:inline-block;">
+            Email Me
+        </a>
+    </div>
+</section>
+
+<footer>
+    © 2026 Muktai Biradar — Designed & Built with Passion 
+</footer>
+
+<script>
+function toggleTheme() {
+    document.documentElement.classList.toggle("light");
+    document.querySelector(".theme-toggle").textContent =
+        document.documentElement.classList.contains("light") ? "☀️" : "🌙";
+}
+
+function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("show");
+}
+</script>
+
+</body>
+</html>
