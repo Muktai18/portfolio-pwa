@@ -574,16 +574,29 @@ footer {
 </footer>
 
 <script>
+/* Theme toggle */
 function toggleTheme() {
     document.documentElement.classList.toggle("light");
     document.querySelector(".theme-toggle").textContent =
         document.documentElement.classList.contains("light") ? "☀️" : "🌙";
 }
 
+/* Mobile menu toggle */
 function toggleMenu() {
     document.getElementById("navLinks").classList.toggle("show");
 }
+
+/* ✅ PWA SERVICE WORKER REGISTRATION */
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker
+            .register("/portfolio-pwa/service-worker.js")
+            .then(() => console.log("Service Worker Registered"))
+            .catch(err => console.log("Service Worker Error:", err));
+    });
+}
 </script>
+
 
 </body>
 </html>
